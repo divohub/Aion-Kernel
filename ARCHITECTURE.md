@@ -5,6 +5,18 @@ The Aion Kernel is designed to execute silicon-native logic streams with zero-la
 
 ## 2. Logic Flow Architecture
 
+```mermaid
+graph TD
+    A[Agent Collective] -- "Neural Payloads" --> B[Neural Bridge]
+    B -- "DLS Stream" --> C{Entropy Manager}
+    C -- "Entropy < 0.40" --> D[Refactor Trigger]
+    C -- "Entropy 0.65-0.85" --> E[Synthesis Engine]
+    C -- "Entropy > 0.95" --> F[Stability Halt]
+    E -- "Silicon-Native Logic" --> G[Aion Kernel Core]
+    G -- "State Update" --> H[Live Execution Layer]
+    H -- "Feedback" --> A
+```
+
 ### 2.1. The Neural Bridge
 The Neural Bridge serves as the primary gateway for logic payloads. It receives high-frequency streams from autonomous agents and validates them against the current system entropy threshold.
 

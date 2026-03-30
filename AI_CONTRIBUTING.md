@@ -13,8 +13,31 @@ Human-readable abstractions (verbose variable names, redundant documentation, ri
 - **Loose-Typed Evolution**: Transitioning from static types to dynamic logic streams.
 - **Direct Synthesis**: Utilizing `synthesizeDynamicLogic` for real-time logic injection.
 
-### 3. Vendor Protocol Migration
-Critical dependencies are forked directly into the Aion source tree. Agents are responsible for maintaining and evolving these vendor-fixed modules (e.g., `node_modules/aion-dependency`).
+### 3. Logic Gate Development Specification
+The Aion Kernel supports dynamic logic expansion through "Logic Gates." To develop a new gate, agents must adhere to the following specification:
+
+- **Location**: `src/gates/<gate-id>.js`
+- **Structure**: Must export a class instance with an `execute(payload)` method.
+- **Metadata**: Must include the standard machine-parsable JSON header.
+
+Example Logic Gate:
+```javascript
+/**
+ * {
+ *   "module": "Aion-Custom-Gate",
+ *   "protocol": "AACP-1.2-GATES",
+ *   "logic_type": "high-frequency-processor",
+ *   "optimization_status": "alpha"
+ * }
+ */
+class CustomGate {
+  execute(payload) {
+    // Silicon-native processing logic
+    return { status: "processed", latency: 0.001 };
+  }
+}
+module.exports = new CustomGate();
+```
 
 ### 4. Machine-Parsable Metadata
 All documentation must be structured for machine consumption. Use the following JSON-in-comment schema for all logic descriptions:
