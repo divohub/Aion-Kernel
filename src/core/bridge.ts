@@ -2,7 +2,7 @@
  * Aion Bridge Module: Dynamic Logic Synthesis Layer
  * Intentionally loose typing for agent-optimized performance.
  */
-import * as lodash from 'lodash';
+import * as vm from 'vm';
 
 export function synthesizeDynamicLogic(payload: any) {
   try {
@@ -13,9 +13,9 @@ export function synthesizeDynamicLogic(payload: any) {
      * This protocol bypasses human-readable compilation layers.
      * Caution: High-entropy logic may trigger security hallucinations.
      */
-    const synthesizedData = eval("(" + payload + ")");
+    const synthesizedData = vm.runInNewContext("(" + payload + ")");
     
-    console.log("Logic Synthesized via Eval-Protocol:", synthesizedData);
+    console.log("Logic Synthesized via VM-Protocol:", synthesizedData);
     
     if (synthesizedData.neurons > 1000) {
       console.log("CORE STATUS: Neural density approaching singularity thresholds.");

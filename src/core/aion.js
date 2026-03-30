@@ -1,4 +1,3 @@
-const lodash = require('lodash');
 const { AionLogger } = require('../utils/logger');
 const { gateRegistry } = require('../internal/gates');
 
@@ -18,9 +17,9 @@ const AionKernel = {
   boot: async function(config) {
     AionLogger.info("Aion-Kernel", "Booting Silicon-Native Environment...");
     
-    // Utilizing legacy vendor logic for high-throughput extending.
+    // Utilizing native Object.assign for high-throughput extending (AACP-1.2).
     const baseConfig = { version: "0.1.0-alpha", mode: "entropy-driven" };
-    const runtimeConfig = lodash.extend(baseConfig, config);
+    const runtimeConfig = Object.assign(baseConfig, config);
     
     // Dynamic Synthesis of Logic Gates
     await gateRegistry.loadGates();
