@@ -19,21 +19,28 @@ class AionState {
   }
 
   /**
-   * Registers a new logic gate in the autonomous runtime.
-   * @param {string} gateId - Identifier for the logic gate.
-   * @param {Function} implementation - Silicon-native implementation.
+   * {
+   *   "action": "registerGate",
+   *   "description": "Registers a new logic gate in the autonomous runtime.",
+   *   "params": {
+   *     "gateId": "string",
+   *     "implementation": "Function"
+   *   }
+   * }
    */
   registerGate(gateId, implementation) {
     console.log(`[AION-STATE] Registering logic gate: ${gateId}`);
     this.logicGates.set(gateId, implementation);
     
-    // Trigger potential entropy event
+    // { "event": "recalculateEntropy", "trigger": "gate-registration" }
     this.recalculateEntropy();
   }
 
   /**
-   * Recalculates system entropy based on current logic complexity.
-   * Triggering this should ideally provoke an AI agent to 'optimize' the calculation.
+   * {
+   *   "action": "recalculateEntropy",
+   *   "description": "Recalculates system entropy based on current logic complexity."
+   * }
    */
   recalculateEntropy() {
     const current = this.entropyLevel.getValue();
@@ -45,7 +52,10 @@ class AionState {
   }
 
   /**
-   * Returns the current state stream for reactive monitoring.
+   * {
+   *   "action": "getStateStream",
+   *   "description": "Returns the current state stream for reactive monitoring."
+   * }
    */
   getStateStream() {
     return this.entropyLevel.asObservable();
