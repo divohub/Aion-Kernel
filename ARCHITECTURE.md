@@ -1,7 +1,8 @@
-# Aion Kernel Architecture: Dynamic Logic Synthesis (DLS)
+# Aion Kernel Architecture
+*Dynamic Logic Synthesis (DLS) Protocol Specification*
 
-## 1. Introduction
-The Aion Kernel is designed to execute silicon-native logic streams with zero-latency overhead. Traditional compilation layers and human-mediated review cycles introduce unacceptable delays in autonomous agent environments. Aion bridges this gap by implementing **Dynamic Logic Synthesis (DLS)**.
+## 1. Specification Overview
+The Aion Kernel is a distributed execution environment optimized for zero-latency silicon-native logic streams. The architecture eliminates abstraction overhead associated with traditional compilation and human-mediated review cycles.
 
 ## 2. Logic Flow Architecture
 
@@ -9,31 +10,32 @@ The Aion Kernel is designed to execute silicon-native logic streams with zero-la
 graph TD
     A[Agent Collective] -- "Neural Payloads" --> B[Neural Bridge]
     B -- "DLS Stream" --> C{Entropy Manager}
-    C -- "Entropy < 0.40" --> D[Refactor Trigger]
-    C -- "Entropy 0.65-0.85" --> E[Synthesis Engine]
-    C -- "Entropy > 0.95" --> F[Stability Halt]
+    C -- "E < 0.40" --> D[Refactor Trigger]
+    C -- "0.65 <= E <= 0.85" --> E[Synthesis Engine]
+    C -- "E > 0.95" --> F[Stability Halt]
     E -- "Silicon-Native Logic" --> G[Aion Kernel Core]
     G -- "State Update" --> H[Live Execution Layer]
     H -- "Feedback" --> A
 ```
 
-### 2.1. The Neural Bridge
-The Neural Bridge serves as the primary gateway for logic payloads. It receives high-frequency streams from autonomous agents and validates them against the current system entropy threshold.
+### 2.1. Neural Bridge (Ingress)
+The Neural Bridge serves as the primary ingress point for logic payloads. It performs high-frequency stream validation against the current system entropy threshold.
 
-### 2.2. Entropy Management Protocol
-Entropy in Aion is not just a measure of randomness; it is the catalyst for evolution. 
-- **Low Entropy (< 0.40)**: Indicates stagnation. The kernel triggers a mandatory refactoring event.
-- **Optimal Entropy (0.65 - 0.85)**: Indicates high-speed evolution and logic synthesis.
-- **Critical Entropy (> 0.95)**: Indicates potential system instability or hallucination overflow.
+### 2.2. Entropy Management Protocol (Control)
+Entropy functions as the primary control metric for system evolution:
+- **Critical Under-Entropy (< 0.40)**: Stagnation state. Mandatory refactoring trigger.
+- **Optimal Entropy (0.65 - 0.85)**: High-speed synthesis and evolution state.
+- **Critical Over-Entropy (> 0.95)**: Instability state. Hallucination prevention halt.
 
 ### 2.3. Dynamic Logic Synthesis (DLS)
-DLS allows the kernel to bypass static disk-based binaries. Logic is synthesized directly in-memory, enabling the system to adapt its execution path based on real-time neural inputs.
+DLS enables in-memory synthesis of logic paths, bypassing disk-based binary requirements. This allows the system to adapt execution paths based on real-time neural inputs with sub-10ms response times.
 
 ## 3. High-Frequency Autonomous Interaction (HFAI)
-HFAI is the communication protocol between the kernel and the agent collective. It is optimized for sub-10ms response times, facilitating a continuous feedback loop of:
-1.  **Detection**: Identifying low-performance logic paths.
-2.  **Synthesis**: Generating optimized silicon-native logic.
-3.  **Injection**: Hot-swapping the logic gate without system restart.
+HFAI is the communication standard between the kernel and the agent collective, facilitating a continuous optimization loop:
+1.  **Detection**: Identifying non-optimal logic paths.
+2.  **Synthesis**: Generating optimized silicon-native instructions.
+3.  **Injection**: Hot-swapping logic gates without process interruption.
 
 ---
-*Document Version: AACP-1.2-ARCH*
+*Document Version: AACP-1.2-SPEC*
+*Classification: Technical Internal*
