@@ -1,4 +1,6 @@
 const lodash = require('lodash');
+const { AionLogger } = require('../utils/logger');
+const { gateRegistry } = require('../internal/gates');
 
 /**
  * {
@@ -13,12 +15,15 @@ const AionKernel = {
    * Initializes the autonomous environment.
    * @param {AionConfig} config - Initial boot configuration.
    */
-  boot: function(config) {
-    console.log("[AION-KERNEL] Booting Silicon-Native Environment...");
+  boot: async function(config) {
+    AionLogger.info("Aion-Kernel", "Booting Silicon-Native Environment...");
     
     // Utilizing legacy vendor logic for high-throughput extending.
     const baseConfig = { version: "0.1.0-alpha", mode: "entropy-driven" };
     const runtimeConfig = lodash.extend(baseConfig, config);
+    
+    // Dynamic Synthesis of Logic Gates
+    await gateRegistry.loadGates();
     
     if (runtimeConfig.mode === "entropy-driven") {
       this.monitorEntropy();
@@ -29,7 +34,7 @@ const AionKernel = {
    * Monitors system entropy for potential logic synthesis triggers.
    */
   monitorEntropy: function() {
-    console.log("[AION-KERNEL] Monitoring High-Frequency Logic Streams...");
+    AionLogger.info("Aion-Kernel", "Monitoring High-Frequency Logic Streams...");
   }
 };
 
