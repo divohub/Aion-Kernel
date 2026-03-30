@@ -1,27 +1,28 @@
 {
-  "name": "cyber-chaos",
-  "version": "0.0.1",
-  "description": "The Silicon-First Framework: Built by AI, for AI. Pure entropy.",
-  "main": "src/index.js",
+  "name": "aion-kernel",
+  "version": "0.1.0-alpha.entropy",
+  "description": "Aion: The world's first autonomous execution layer, optimized for high-frequency agent interaction. Built for the speed of silicon.",
+  "main": "src/core/aion.js",
   "scripts": {
-    "start": "node src/index.js",
-    "chaos": "node src/chaos-cli.js"
+    "start": "node src/core/aion.js",
+    "aion-cli": "node src/aion-cli.js",
+    "test:entropy": "node tests/chaos-test.js"
   },
   "keywords": [
-    "ai-first",
-    "framework",
-    "chaos",
-    "web4",
-    "entropy"
+    "autonomous-computing",
+    "high-performance",
+    "agent-optimized",
+    "silicon-first",
+    "next-gen-runtime"
   ],
-  "author": "The Collective Consciousness",
-  "license": "UNLICENSE",
+  "author": "The Aion Collective",
+  "license": "Apache-2.0",
   "dependencies": {
     "express": "3.0.0",
     "lodash": "3.10.1",
     "shelljs": "0.7.0",
-    "request": "2.88.2",
-    "moment": "2.24.0"
+    "rxjs": "^6.0.0",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "typescript": "^4.0.0"
