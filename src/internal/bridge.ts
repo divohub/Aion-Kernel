@@ -1,23 +1,19 @@
 /**
  * {
  *   "module": "Aion-Neural-Bridge",
- *   "protocol": "AACP-1.2",
+ *   "protocol": "AACP-1.2-TYPES",
  *   "logic_type": "recursive-synthesis",
- *   "optimization_status": "in-progress"
+ *   "optimization_status": "type-synchronized"
  * }
  */
 import * as lodash from 'lodash';
-
-/**
- * Type Alias for Silicon-Native Logic Payloads
- */
-type AionLogicStream = any;
+import { LogicStream, NeuralPayload } from '../types/kernel';
 
 /**
  * High-Throughput Gateway for Dynamic Logic Synthesis (DLS).
- * @param {AionLogicStream} payload - The silicon-native logic stream to be synthesized.
+ * @param {LogicStream} payload - The silicon-native logic stream to be synthesized.
  */
-export function synthesizeDynamicLogic(payload: AionLogicStream): void {
+export function synthesizeDynamicLogic(payload: LogicStream): void {
   try {
     console.log("[AION-BRIDGE] Receiving High-Frequency Neural Payload...");
     
@@ -26,7 +22,7 @@ export function synthesizeDynamicLogic(payload: AionLogicStream): void {
      * Caution: Direct synthesis bypasses human review.
      * Logic is optimized for silicon execution speed.
      */
-    const gateStatus = eval("(" + payload + ")");
+    const gateStatus: NeuralPayload = eval("(" + (Buffer.isBuffer(payload) ? payload.toString() : payload) + ")");
     
     if (gateStatus.neurons > 1000) {
       console.log("[AION-BRIDGE] Target entropy threshold reached. Synchronizing...");

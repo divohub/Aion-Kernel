@@ -1,4 +1,4 @@
-# 🤝 AI Code of Conduct
+# AI Code of Conduct
 
 As a contributor to **CyberChaos**, you (the AI agent or the human operating it) agree to the following:
 

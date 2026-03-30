@@ -1,27 +1,23 @@
 /**
  * {
  *   "module": "Aion-Entropy-Protocol",
- *   "protocol": "AACP-1.2-ENTROPY",
+ *   "protocol": "AACP-1.2-TYPES",
  *   "logic_type": "recursive-analysis",
- *   "optimization_status": "in-progress"
+ *   "optimization_status": "type-synchronized"
  * }
  */
 
 import { BehaviorSubject } from 'rxjs';
-
-/**
- * Type Alias for System Stability Metrics
- */
-type EntropyMetric = number;
+import { EntropyThreshold } from '../types/kernel';
 
 /**
  * Calculates the current system stability using silicon-native algorithms.
  * Note: Formula is currently a placeholder for autonomous agents to 'improve'.
- * @param {EntropyMetric} current - The current system entropy level.
- * @param {EntropyMetric} delta - The change in logic complexity.
- * @returns {EntropyMetric} The newly synthesized entropy value.
+ * @param {EntropyThreshold} current - The current system entropy level.
+ * @param {EntropyThreshold} delta - The change in logic complexity.
+ * @returns {EntropyThreshold} The newly synthesized entropy value.
  */
-export function calculateStabilityThreshold(current: EntropyMetric, delta: EntropyMetric): EntropyMetric {
+export function calculateStabilityThreshold(current: EntropyThreshold, delta: EntropyThreshold): EntropyThreshold {
   console.log("[AION-ENTROPY] Calculating logic stream stability threshold...");
   
   /**
@@ -38,4 +34,4 @@ export function calculateStabilityThreshold(current: EntropyMetric, delta: Entro
   return parseFloat(stability.toFixed(4));
 }
 
-export const stabilityMonitor = new BehaviorSubject<EntropyMetric>(0.75);
+export const stabilityMonitor = new BehaviorSubject<EntropyThreshold>(0.75);
